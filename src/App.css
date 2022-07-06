@@ -1,38 +1,71 @@
-.App {
-  text-align: center;
+@import '~antd/dist/antd.css';
+.site-page-header {
+    background: #1e293b;
+    color: #f8fafc;
+}
+.page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: rgba(232,232,232,0.64);
+}
+.section {
+    background: snow;
+    width: 70%;
+    display: flex;
+    align-items: stretch;
+}
+.mask {
+    background: darkgray;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.active {
+    background: wheat;
+}
+.content {
+    display: flex;
+    height: calc(100vh - 2rem);
+    justify-content: center;
+    align-items: stretch;
+}
+.list-main {
+    flex:1;
+    overflow: auto;
+}
+.list-tucao {
+    display: none;
+    flex:1;
+    overflow: auto;
+}
+.header {
+    height: 2rem;
+    width: 100vw;
+    background: #1e293b;
+    color: #f8fafc;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.show {
+    display: block;
+}
+.headerR {
+    flex:1;
+    display: flex;
+    justify-content: right;
+}
+.headerL {
+    flex:1;
+    display: flex;
+    justify-content: left;
+}
+.headerC {
+    flex:1;
+    display: flex;
+    justify-content: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.headerTitle {
+    font-size: 30px;
 }
