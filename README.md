@@ -17,3 +17,4 @@ Personal Fun Page
 - [ ] Change the position of author and border of the item 
 - [ ] Tucao item can display be replay comment
 - [ ] Add loading page
+- [ ] Add tucao day cache comments 2 hour cache 
