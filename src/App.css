@@ -1,4 +1,13 @@
 @import '~antd/dist/antd.css';
+
+:root {
+    --darkblue: #112D4E;
+    --blue: #3F72AF;
+    --lightblue: #DBE2EF;
+    --white: #F9F7F7;
+}
+
+
 .site-page-header {
     background: #1e293b;
     color: #f8fafc;
@@ -7,20 +16,31 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background: rgba(232,232,232,0.64);
+    background: var(--white);
 }
 .section {
-    background: snow;
-    width: 70%;
+    background: var(--white);
     display: flex;
+    justify-content: center;
     align-items: stretch;
 }
 .mask {
-    background: darkgray;
+    background: var(--darkblue);
+}
+.mask .ant-list-item-meta-title,
+.mask .ant-list-item-meta-description {
+    color: var(--darkblue);
+}
+.active {
+    background: var(--white);
 }
 
-.active {
-    background: wheat;
+.container::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+.active .ant-list-item-meta-title  ,
+.active .ant-list-item-meta-description {
+    color:black !important;
 }
 .content {
     display: flex;
@@ -29,26 +49,41 @@
     align-items: stretch;
 }
 .list-main {
-    flex:1;
+    width: 60vw;
     overflow: auto;
+    padding: 0 0.5rem;
+}
+.mask .list-main {
+    overflow: hidden;
 }
 .list-tucao {
+    padding: 0 0.5rem;
+    width: 30vw;
     display: none;
-    flex:1;
     overflow: auto;
+}
+.ant-list-split .ant-list-item {
+    border-bottom:unset;
+}
+.list-main::-webkit-scrollbar,
+.list-tucao::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
 }
 .header {
     height: 2rem;
     width: 100vw;
-    background: #1e293b;
-    color: #f8fafc;
+    background: var(--darkblue);
+    color: var(--white);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
-.show {
+.list-tucao.display-tucao {
     display: block;
+}
+.display-tucao.list-main  {
+    overflow: hidden;
 }
 .headerR {
     flex:1;

@@ -82,12 +82,19 @@ function Content(props) {
         item.active = 'active';
 
         const tucaoId = item.link.substring(item.link.lastIndexOf('/'));
+        let tucaoRespon;
+        let tucao;
+        // try {
+        //     tucaoRespon = await fetch('https://tucao.space4fun.workers.dev' + tucaoId);
+        //     tucao = await tucaoRespon.json();
+        // } catch (e) {
+        //     console.error(e);
+        //     tucao = tucaoData;
+        // }
 
-        const tucaoRespon = await fetch('https://tucao.space4fun.workers.dev' + tucaoId);
-        const tucao = await tucaoRespon.json();
-
+        tucao = tucaoData;
         setTucao(tucao.hot_tucao ?? tucao.tucao);
-        setTucaoShow('show');
+        setTucaoShow('display-tucao');
         setListMask('mask')
 
         const nData = data.map(x => {
@@ -104,7 +111,7 @@ function Content(props) {
         <div  className={'content'}>
 
             <div ref={sectionRef} className={'section'}>
-                <div className="list-main">
+                <div className={"list-main "+tucaoShow}>
                     <List
                         className={'mainList '+ listMask}
                         itemLayout="horizontal"
@@ -112,6 +119,7 @@ function Content(props) {
                         renderItem={item => (
                             <List.Item onClick={()=>itemClick(item)} className={'item '+ item.active}>
                                 <List.Item.Meta
+                                    className={'item-value'}
                                     title={item.author}
                                     description={item.contentSnippet}
                                 />
@@ -126,6 +134,7 @@ function Content(props) {
                         renderItem={item => (
                             <List.Item>
                                 <List.Item.Meta
+                                    className={'item-value'}
                                     title={<a href="https://ant.design">{item.comment_author}</a>}
                                     description={item.comment_content}
                                 />
