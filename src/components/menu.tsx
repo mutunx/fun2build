@@ -19,7 +19,10 @@ const menu = (
         ]}
     />
 );
-function HeaderMenu(props) {
+
+
+
+function HeaderMenu() {
     return (
         <Dropdown overlay={menu}>
             <Typography.Link>

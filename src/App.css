@@ -25,11 +25,11 @@
     align-items: stretch;
 }
 .mask {
-    background: var(--darkblue);
+    background: var(--white);
 }
 .mask .ant-list-item-meta-title,
 .mask .ant-list-item-meta-description {
-    color: var(--darkblue);
+    color: var(--white);
 }
 .active {
     background: var(--white);

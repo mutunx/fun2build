@@ -1,7 +1,7 @@
 import React from 'react';
 import {Breadcrumb} from "antd";
 
-function HeaderBreadcrumb(props) {
+function HeaderBreadcrumb() {
     return (
         <Breadcrumb >
             <Breadcrumb.Item><a style={{color:'white'}}>主页</a></Breadcrumb.Item>

@@ -1,71 +1,102 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {List} from "antd";
-import {xml,tucaoData} from './data.js'
+import {tucaoData} from './data.js'
 import Parser from "rss-parser";
+import useSWR from 'swr'
 
-
-
-
-function Content(props) {
+type tucao = {
+    "comment_ID": number,
+    "comment_post_ID": number,
+    "comment_author": string,
+    "comment_date": string,
+    "comment_date_int": number,
+    "comment_content": string,
+    "comment_parent": number,
+    "comment_reply_ID": number,
+    "is_jandan_user": number,
+    "is_tip_user": number,
+    "vote_positive": number,
+    "vote_negative": number,
+    "sub_comment_count": number,
+    "images": string | null,
+    "ip_location": string
+}
+type comment = {
+    author: string,
+    content: string,
+    contentSnippet: string,
+    creator: string,
+    guid: string,
+    isoDate: string,
+    link: string,
+    pubDate: string,
+    title: string,
+    active: string,
+}
+function Content() {
 
     const defaultData = [
         {
-            author: "哥谭市革委会主任",
-            content: "<small><b>@树洞</b></small>\n<p>老婆开始给我下猛药了，经常点生蚝要我吃，哎，已婚男人的压力就是大</p>\n",
-            contentSnippet: "@树洞\n老婆开始给我下猛药了，经常点生蚝要我吃，哎，已婚男人的压力就是大",
-            creator: "哥谭市革委会主任",
-            guid: "http://i.jandan.net/t/5269905",
-            isoDate: "2022-07-02T21:58:47.000Z",
-            link: "http://i.jandan.net/t/5269905",
-            pubDate: "Sat, 02 Jul 2022 21:58:47 GMT",
-            title: "哥谭市革委会主任: @树洞 老婆开始给我下猛药了，经常点生蚝要我吃，哎，已婚男人的压力就是大",
+            author: "lode",
+            content: "loading",
+            contentSnippet: "",
+            creator: "",
+            guid: "",
+            isoDate: "",
+            link: "",
+            pubDate: "",
+            title: "",
             active: '',
         },
     ]
     const defaultTucao = [
         {
-            "comment_ID": 10718033,
-            "comment_post_ID": 102312,
-            "comment_author": "臭臭鼠",
-            "comment_date": "2022-07-02 22:21:05",
-            "comment_date_int": 1656771665,
-            "comment_content": "去练负重深蹲吧。\n坚实有力的大腿四头肌、臀肌能在打桩时为你带来源源不断的充沛动力。",
-            "comment_parent": 5269905,
-            "comment_reply_ID": 0,
-            "is_jandan_user": 0,
-            "is_tip_user": 0,
-            "vote_positive": 91,
-            "vote_negative": 1,
-            "sub_comment_count": 0,
+            "comment_ID": -1,
+            "comment_post_ID": -1,
+            "comment_author": "",
+            "comment_date": "",
+            "comment_date_int": -1,
+            "comment_content": "",
+            "comment_parent": -1,
+            "comment_reply_ID": -1,
+            "is_jandan_user": -1,
+            "is_tip_user": -1,
+            "vote_positive": -1,
+            "vote_negative": -1,
+            "sub_comment_count": -1,
             "images": null,
-            "ip_location": "福建省泉州市"
+            "ip_location": ""
         },
     ]
-    const [data,setData] = useState(defaultData)
+    const [data,setData] = useState<comment[]>(defaultData)
     const [tucao,setTucao] = useState(defaultTucao)
     const [tucaoShow,setTucaoShow] = useState('')
     const [listMask,setListMask] = useState('')
     const [init,setInit] = useState(false)
-    const sectionRef = useRef();
+    const sectionRef = useRef<HTMLDivElement>() as React.MutableRefObject<HTMLInputElement>;
     useEffect(()=>{
-        const parser = new Parser();
+        const fetchComment = async () => {
+            const parser = new Parser();
 
 
-
-        parser.parseURL('https://spac4fun.herokuapp.com/jandan/top-comments',(err, feed)=> {
-            console.log(err,feed)
-            const data = feed.items
+            const feed:any = await parser.parseURL('https://spac4fun.herokuapp.com/jandan/top-comments');
+            const data:comment[] = feed.items
             setData(data)
+            window.addEventListener('click',(e)=> {
+                if(sectionRef !== null && sectionRef.current !== null && sectionRef.current && !sectionRef.current.contains(e.target as HTMLDivElement)){
+                    setListMask('');
+                    setTucaoShow('');
+                    setInit(true)
+                }
+            })
+        }
 
+
+        fetchComment().catch((err) => {
+            console.log(err)
         })
 
-        window.addEventListener('click',(e)=> {
-            if(sectionRef.current && !sectionRef.current.contains(e.target)){
-                setListMask('');
-                setTucaoShow('');
-                setInit(true)
-            }
-        })
+
     },[])
 
 
@@ -75,7 +106,7 @@ function Content(props) {
         setInit(false);
         setData(newList);
     }
-    async function itemClick(item) {
+    async function itemClick(item:comment) {
         // url "http://i.jandan.net/t/5269905"
         // tucao api http://i.jandan.net/api/tucao/all/5269905
         console.log(item.link)
@@ -84,15 +115,15 @@ function Content(props) {
         const tucaoId = item.link.substring(item.link.lastIndexOf('/'));
         let tucaoRespon;
         let tucao;
-        // try {
-        //     tucaoRespon = await fetch('https://tucao.space4fun.workers.dev' + tucaoId);
-        //     tucao = await tucaoRespon.json();
-        // } catch (e) {
-        //     console.error(e);
-        //     tucao = tucaoData;
-        // }
+        try {
+            tucaoRespon = await fetch('https://tucao.space4fun.workers.dev' + tucaoId);
+            tucao = await tucaoRespon.json();
+        } catch (e) {
+            console.error(e);
+            tucao = tucaoData;
+        }
 
-        tucao = tucaoData;
+        // tucao = tucaoData;
         setTucao(tucao.hot_tucao ?? tucao.tucao);
         setTucaoShow('display-tucao');
         setListMask('mask')
@@ -101,7 +132,8 @@ function Content(props) {
             x.active = '';
             return x
         });
-        nData.find(x => x.guid === item.guid).active = 'active'
+        const activeData:comment | undefined = nData.find(x => x.guid === item.guid)
+        if(activeData) activeData.active = 'active'
         setData(nData);
 
 
