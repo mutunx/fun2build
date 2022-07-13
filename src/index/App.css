@@ -1,4 +1,4 @@
-@import '~antd/dist/antd.css';
+@import '../../node_modules/antd/dist/antd.css';
 
 :root {
     --darkblue: #112D4E;
@@ -7,8 +7,20 @@
     --white: #F9F7F7;
 }
 
+.ant-list-item-meta-title {
+    color: var(--blue)
+}
+.ant-list-item-meta-description {
+    color: var(--darkblue)
+}
 
-.site-page-header {
+.active .ant-list-item-meta-title {
+    color: var(--blue) !important;
+}
+.active .ant-list-item-meta-description {
+    color: var(--darkblue) !important;
+}
+ .site-page-header {
     background: #1e293b;
     color: #f8fafc;
 }
@@ -38,10 +50,7 @@
 .container::-webkit-scrollbar {
     display: none;  /* Safari and Chrome */
 }
-.active .ant-list-item-meta-title  ,
-.active .ant-list-item-meta-description {
-    color:black !important;
-}
+
 .content {
     display: flex;
     height: calc(100vh - 2rem);

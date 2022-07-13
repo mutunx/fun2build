@@ -1,5 +1,4 @@
 import { Dropdown, Menu, Space, Typography } from 'antd';
-import React from 'react';
 const menu = (
     <Menu
         selectable

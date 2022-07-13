@@ -1,8 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {List} from "antd";
-import {tucaoData} from './data.js'
 import Parser from "rss-parser";
-import useSWR from 'swr'
 
 type tucao = {
     "comment_ID": number,
@@ -37,9 +35,9 @@ function Content() {
 
     const defaultData = [
         {
-            author: "lode",
-            content: "loading",
-            contentSnippet: "",
+            author: "loader",
+            content: "",
+            contentSnippet: "loading",
             creator: "",
             guid: "",
             isoDate: "",
@@ -109,7 +107,6 @@ function Content() {
     async function itemClick(item:comment) {
         // url "http://i.jandan.net/t/5269905"
         // tucao api http://i.jandan.net/api/tucao/all/5269905
-        console.log(item.link)
         item.active = 'active';
 
         const tucaoId = item.link.substring(item.link.lastIndexOf('/'));
@@ -120,10 +117,9 @@ function Content() {
             tucao = await tucaoRespon.json();
         } catch (e) {
             console.error(e);
-            tucao = tucaoData;
+            tucao = defaultTucao;
         }
 
-        // tucao = tucaoData;
         setTucao(tucao.hot_tucao ?? tucao.tucao);
         setTucaoShow('display-tucao');
         setListMask('mask')
@@ -167,7 +163,7 @@ function Content() {
                             <List.Item>
                                 <List.Item.Meta
                                     className={'item-value'}
-                                    title={<a href="https://ant.design">{item.comment_author}</a>}
+                                    title={item.comment_author}
                                     description={item.comment_content}
                                 />
                             </List.Item>
