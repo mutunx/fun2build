@@ -1,16 +1,15 @@
-import './App.css';
 import Header from "../common/components/header";
 import Content from "./components/content";
-import {useEffect} from "react";
+import {Flex} from "@chakra-ui/react";
 
 function App() {
 
 
   return (
-      <div className={'page'}>
+      <Flex flexDir={'column'} bg={'gray.50'} h={'100vh'} >
         <Header />
         <Content />
-      </div>
+      </Flex>
   );
 }
 

@@ -1,21 +1,22 @@
 import HeaderMenu from "./menu";
+import {Flex} from "@chakra-ui/react";
 function Header() {
     return (
-        <div className={'header'}>
-            <div className={'headerL'}>
+        <Flex h={'2rem'} w={'100vw'} bg={'blue.900'} color={'blue.50'} flexDir={'row'} justify={'space-between'} align={'center'}>
+            <Flex flex={1} justify={'left'}>
                 <HeaderMenu />
-            </div>
+            </Flex>
 
-            <div className="headerC">
+            <Flex flex={1} justify={'center'}>
                 {/*<HeaderBreadcrumb />*/}
                 <span style={{color:"white"}}>主页/煎蛋/优评</span>
-            </div>
+            </Flex>
 
-            <div className="headerR">
+            <Flex flex={1} justify={'right'}>
 
-            </div>
+            </Flex>
 
-        </div>
+        </Flex>
     )
 }
 
