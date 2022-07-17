@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {BaseSyntheticEvent, SyntheticEvent, useEffect, useRef, useState} from 'react';
 import {Box, Flex, List, ListItem,  SkeletonText, Text, useBoolean, useOutsideClick} from "@chakra-ui/react";
 import {useComment} from "../../common/hook/useComment";
 import Tucao from "../../common/components/tucao";
@@ -10,7 +10,8 @@ function Content() {
     const [activeComment,setActiveComment] = useState("");
     const [activeTucaoCommentId,setActiveTucaoCommentId] = useState("");
     const sectionRef = useRef() as React.MutableRefObject<HTMLInputElement>;
-
+    const commentRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+    const tucaoRef = useRef() as React.MutableRefObject<HTMLInputElement>;
     useOutsideClick({
         ref: sectionRef,
         handler: () => {
@@ -21,10 +22,15 @@ function Content() {
     const {comment,isCommentLoading,isCommentError} = useComment();
 
 
+    function scrollEvent(e: React.WheelEvent) {
+        const scrollObj = tucaoFlag ? tucaoRef.current : commentRef.current;
+        scrollObj.scrollBy(e.deltaX,e.deltaY);
+    }
+
     return (
-        <Flex justify={'center'} align={'stretch'} h={'calc(100vh - 2rem)'} >
+        <Flex justify={'center'} align={'stretch'} onWheel={scrollEvent} h={'calc(100vh - 2rem)'} >
             <Flex justify={'center'} align={'stretch'}  ref={sectionRef} >
-                <Box w={'60vw'} overflow={tucaoFlag ? 'hidden':'auto'}>
+                <Box ref={commentRef} w={'60vw'} overflow={tucaoFlag ? 'hidden':'auto'} sx={{'::-webkit-scrollbar':{display:'none'}}}>
                     <List spacing={4} >
                         {
                             isCommentLoading ?
@@ -44,7 +50,7 @@ function Content() {
                     </List>
 
                 </Box>
-                <Box w={'30vw'} display={tucaoFlag ? 'block':'none'} overflow={'auto'} >
+                <Box ref={tucaoRef} w={'30vw'} display={tucaoFlag ? 'block':'none'} overflow={'auto'}  sx={{'::-webkit-scrollbar':{display:'none'}}}>
                     <Tucao id={activeTucaoCommentId} />
 
                 </Box>
