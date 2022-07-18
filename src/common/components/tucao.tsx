@@ -1,6 +1,5 @@
 import React from 'react';
 import {Box, List, ListItem, SkeletonText, Text} from "@chakra-ui/react";
-import {tucao} from "../type";
 import {useTucao} from "../hook/useTucao";
 
 type props = {
@@ -8,7 +7,6 @@ type props = {
 }
 
 function Tucao(props:props) {
-
 
     const {tucao,isTucaoError,isTucaoLoading} = useTucao(props.id);
     if (isTucaoError) console.error(isTucaoError)
