@@ -7,6 +7,7 @@ type tucao = {
     "comment_content": string,
     "comment_parent": number,
     "comment_reply_ID": number,
+    "comment_reply": tucao | null,
     "is_jandan_user": number,
     "is_tip_user": number,
     "vote_positive": number,
@@ -25,6 +26,7 @@ type comment = {
     link: string,
     pubDate: string,
     title: string,
+    module:string,
     active: string,
 }
 

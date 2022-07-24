@@ -1,10 +1,10 @@
-import React, {BaseSyntheticEvent, SyntheticEvent, useEffect, useRef, useState} from 'react';
+import React, { useRef, useState} from 'react';
 import {Box, Flex, List, ListItem,  SkeletonText, Text, useBoolean, useOutsideClick} from "@chakra-ui/react";
 import {useComment} from "../../common/hook/useComment";
 import Tucao from "../../common/components/tucao";
 
 
-function Content() {
+function Comment() {
 
     const [tucaoFlag,setTucaoFlag] = useBoolean(false);
     const [activeComment,setActiveComment] = useState("");
@@ -22,15 +22,12 @@ function Content() {
     const {comment,isCommentLoading,isCommentError} = useComment();
 
 
-    function scrollEvent(e: React.WheelEvent) {
-        const scrollObj = tucaoFlag ? tucaoRef.current : commentRef.current;
-        scrollObj.scrollBy(e.deltaX,e.deltaY);
-    }
+
 
     return (
-        <Flex justify={'center'} align={'stretch'} onWheel={scrollEvent} h={'calc(100vh - 2rem)'} >
+        <Flex justify={'center'} align={'stretch'}  h={'100vh'} >
             <Flex justify={'center'} align={'stretch'}  ref={sectionRef} >
-                <Box ref={commentRef} w={'60vw'} overflow={tucaoFlag ? 'hidden':'auto'} sx={{'::-webkit-scrollbar':{display:'none'}}}>
+                <Box ref={commentRef} w={'40vw'} paddingRight={'1rem'} overflow={tucaoFlag ? 'hidden':'auto'} sx={{'::-webkit-scrollbar':{display:'none'}}}>
                     <List spacing={4} >
                         {
                             isCommentLoading ?
@@ -42,8 +39,8 @@ function Content() {
                                         setActiveComment(item.guid);
                                         setActiveTucaoCommentId(item.link.substring(item.link.lastIndexOf('/')))
                                     }}>
-                                        <Text color={tucaoFlag !== (item.guid === activeComment) ? 'gray.50' : 'blue.400'}>{item.author}</Text>
-                                        <Text color={tucaoFlag !== (item.guid === activeComment) ? 'gray.50' : 'blue.900'}>{item.contentSnippet}</Text>
+                                        <Text color={tucaoFlag !== (item.guid === activeComment) ? 'white' : 'blackAlpha.500'}>{item.module} {item.author}:</Text>
+                                        <Text color={tucaoFlag !== (item.guid === activeComment) ? 'white' : 'blue.900'}>{item.contentSnippet}</Text>
                                     </ListItem>
                                 )
                         }
@@ -60,4 +57,4 @@ function Content() {
     );
 }
 
-export default Content;
+export default Comment;

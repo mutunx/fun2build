@@ -1,14 +1,18 @@
 import Header from "../common/components/header";
-import Content from "./components/content";
+import Comment from "./components/comment";
 import {Flex} from "@chakra-ui/react";
+import {Routes, Route} from "react-router-dom";
 
 function App() {
 
 
   return (
-      <Flex flexDir={'column'} bg={'gray.50'} h={'100vh'} >
+      <Flex flexDir={'row'} justify={'center'} bg={'white'} h={'100vh'} >
         <Header />
-        <Content />
+          <Routes>
+              <Route path="/" element={<Comment />} />
+              <Route path="/test" element={<h1>hello</h1>} />
+          </Routes>
       </Flex>
   );
 }
