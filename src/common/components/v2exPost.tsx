@@ -1,0 +1,41 @@
+import React from 'react';
+import {Box, List, ListItem, SkeletonText, Text} from "@chakra-ui/react";
+import {useTucao} from "../hook/useTucao";
+import {rssItem, tucao} from "../type";
+import {useV2exPost} from "../hook/useV2exPost";
+
+type props = {
+    id:string
+}
+
+function V2exPost({id}:props) {
+
+    const TucaoItem = (props: { item: rssItem; }) => {
+        const item = props.item;
+        return (
+            <Box paddingLeft={'0.7rem'} borderLeftStyle={'solid'} borderLeftWidth={'0.5rem'} borderLeftColor={'blackAlpha.500'}>
+                <Text color={'blackAlpha.500'}>{item.author}</Text>
+                {/*{item.comment_reply  && <TucaoItem  item={item.comment_reply}/>}*/}
+                <Text color={'blue.900'}>{item.contentSnippet}</Text>
+            </Box>
+        )
+    }
+    const {v2exPost,isV2exPostLoading,isV2exPostError} = useV2exPost(id);
+
+    return (
+        <List spacing={4}>
+            {
+                isV2exPostLoading ?
+                    <SkeletonText mt='4' noOfLines={4} spacing='4' />
+                        : isV2exPostError || !v2exPost ? <Box> error </Box>
+                        : v2exPost.map(item =>
+                            <ListItem key={item.guid}>
+                                <TucaoItem item={item} />
+                            </ListItem>)
+            }
+        </List>
+
+    );
+}
+
+export default V2exPost;

@@ -1,13 +1,13 @@
 import useSWR, { Key, Fetcher } from 'swr'
 import Parser from "rss-parser";
-import {comment} from "../type";
+import {rssItem} from "../type";
 
 
 const url: Key = "https://spac4fun.herokuapp.com/jandan/top-comments"
-const fetcher:Fetcher<comment[],string> = (url) => fetch(url)
+const fetcher:Fetcher<rssItem[],string> = (url) => fetch(url)
         .then(r=>r.text())
         .then(text => new Parser().parseString(text))
-        .then(feed => feed.items as comment[])
+        .then(feed => feed.items as rssItem[])
         .then(comments => comments.map(c => {
             const [title,] = c.contentSnippet.split('\n');
             c.module = title;

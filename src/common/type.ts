@@ -16,7 +16,7 @@ type tucao = {
     "images": string | null,
     "ip_location": string
 }
-type comment = {
+type rssItem = {
     author: string,
     content: string,
     contentSnippet: string,
@@ -30,4 +30,4 @@ type comment = {
     active: string,
 }
 
-export type {comment,tucao}
+export type {rssItem,tucao}
