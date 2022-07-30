@@ -9,7 +9,6 @@ const fetcher:Fetcher<rssItem[],string> = (url) => fetch(url)
         .then(text => new Parser().parseString(text))
         .then(feed => feed.items as rssItem[])
     .then(rssItems => {
-        console.log(rssItems)
         rssItems.forEach(item => item.content = item.content.replace(`${item.author}: `,''))
         return rssItems;
     })

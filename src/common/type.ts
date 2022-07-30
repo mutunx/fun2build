@@ -28,6 +28,7 @@ type rssItem = {
     title: string,
     module:string,
     active: string,
+    reply: rssItem[] | undefined,
 }
 
 export type {rssItem,tucao}

@@ -1,7 +1,6 @@
 import React from 'react';
 import {Box, List, ListItem, SkeletonText, Text} from "@chakra-ui/react";
-import {useTucao} from "../hook/useTucao";
-import {rssItem, tucao} from "../type";
+import {rssItem} from "../type";
 import {useV2exPost} from "../hook/useV2exPost";
 
 type props = {
@@ -10,12 +9,12 @@ type props = {
 
 function V2exPost({id}:props) {
 
-    const TucaoItem = (props: { item: rssItem; }) => {
+    const PostItem = (props: { item: rssItem; }) => {
         const item = props.item;
         return (
             <Box paddingLeft={'0.7rem'} borderLeftStyle={'solid'} borderLeftWidth={'0.5rem'} borderLeftColor={'blackAlpha.500'}>
+                {item.reply  && item.reply.map(r => <PostItem key={item.guid+r.guid}  item={r}/>)}
                 <Text color={'blackAlpha.500'}>{item.author}</Text>
-                {/*{item.comment_reply  && <TucaoItem  item={item.comment_reply}/>}*/}
                 <Text color={'blue.900'}>{item.contentSnippet}</Text>
             </Box>
         )
@@ -30,7 +29,7 @@ function V2exPost({id}:props) {
                         : isV2exPostError || !v2exPost ? <Box> error </Box>
                         : v2exPost.map(item =>
                             <ListItem key={item.guid}>
-                                <TucaoItem item={item} />
+                                <PostItem key={item.guid} item={item} />
                             </ListItem>)
             }
         </List>

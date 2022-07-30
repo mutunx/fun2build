@@ -1,7 +1,6 @@
 import React, { useRef, useState} from 'react';
-import {Box, Flex, List, ListItem,  SkeletonText, Text, useBoolean, useOutsideClick} from "@chakra-ui/react";
+import {Box, List, ListItem,  SkeletonText, Text, useBoolean, useOutsideClick} from "@chakra-ui/react";
 import {useComment} from "../../common/hook/useComment";
-import Tucao from "../../common/components/tucao";
 
 type props = {
     setActiveComment:Function,
@@ -11,7 +10,15 @@ function JdComment({setActiveComment}:props) {
 
     const [beClicked,setBeClicked] = useBoolean(false);
     const [guid,setGuid] = useState("");
+    const listRef = useRef() as React.RefObject<HTMLLIElement>;
     const {comment,isCommentLoading,isCommentError} = useComment();
+    useOutsideClick({
+        ref: listRef,
+        handler: () => {
+            setBeClicked.off();
+            setGuid('');
+        },
+    })
     return (
             <List spacing={4} >
                 {
