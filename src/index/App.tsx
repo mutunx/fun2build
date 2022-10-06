@@ -2,11 +2,12 @@ import Header from "../common/components/header";
 import JdComment from "./components/jdComment";
 import {Box, Flex, useOutsideClick} from "@chakra-ui/react";
 import {Routes, Route} from "react-router-dom";
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import Tucao from "../common/components/tucao";
 import V2ex from "./components/v2ex";
 import V2exPost from "../common/components/v2exPost";
-
+import * as juConfig from "../common/juconfig.json";
+import {RSSHub} from "../common/resolver/RSSHub";
 function App() {
     const [activeComment,setActiveComment] = useState("");
     const sectionRef = useRef() as React.MutableRefObject<HTMLInputElement>;
@@ -19,6 +20,10 @@ function App() {
         },
     })
 
+    useEffect(()=> {
+        const rss =  new RSSHub('rss');
+        rss.listVideo(juConfig.RSSHub);
+    },[])
     function scrollEvent(e: React.WheelEvent) {
         const scrollObj = activeComment === '' ? postRef.current : commentRef.current;
         scrollObj.scrollBy(e.deltaX,e.deltaY);

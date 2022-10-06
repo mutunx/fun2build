@@ -2,34 +2,34 @@
   "RSSHub": {
     "video": {
       "followed": [
-        {"url":"https://rsshub.app/youtube/channel/UC9v3JGut2Z1PxrXEpGzgEAA/false"},
-        {"url":"https://rsshub.app/youtube/channel/UCvUJ6BwgUGWBHuUd0cv546g/false"},
-        {"url":"https://rsshub.app/youtube/channel/UC_cv0cSeP4H08QKMlR5b-rw/false"},
-        {"url":"https://rsshub.app/youtube/channel/UCT1YrR_CLpwosODYagzhm7Q/false"},
-        {"url":"https://rsshub.app/youtube/channel/UC8w6AKzoMWZjX3J445gt6NA/false"},
-        {"url":"https://rsshub.app/youtube/channel/UCrTZu-oDZtnfJ-YIK3V9NLw/false"},
-        {"url":"https://rsshub.app/youtube/channel/UCZuuX733ImhEE-ujmWPoZZA/false"},
-        {"url":"https://rsshub.app/youtube/channel/UCGkdwmBhwr61OrCQ4dXXdew/false"}
+        {"url":"https://spac4fun.herokuapp.com/youtube/channel/UC9v3JGut2Z1PxrXEpGzgEAA/false"},
+        {"url":"https://spac4fun.herokuapp.com/youtube/channel/UCvUJ6BwgUGWBHuUd0cv546g/false"},
+        {"url":"https://spac4fun.herokuapp.com/youtube/channel/UC_cv0cSeP4H08QKMlR5b-rw/false"},
+        {"url":"https://spac4fun.herokuapp.com/youtube/channel/UCT1YrR_CLpwosODYagzhm7Q/false"},
+        {"url":"https://spac4fun.herokuapp.com/youtube/channel/UC8w6AKzoMWZjX3J445gt6NA/false"},
+        {"url":"https://spac4fun.herokuapp.com/youtube/channel/UCrTZu-oDZtnfJ-YIK3V9NLw/false"},
+        {"url":"https://spac4fun.herokuapp.com/youtube/channel/UCZuuX733ImhEE-ujmWPoZZA/false"},
+        {"url":"https://spac4fun.herokuapp.com/youtube/channel/UCGkdwmBhwr61OrCQ4dXXdew/false"}
       ]
     },
     "article": {
       "followed": [
-        {"url":"https://rsshub.app/ifanr/coolbuy"},
-        {"url":"https://rsshub.app/sspai/index"},
-        {"url":"https://rsshub.app/pingwest/status"},
-        {"url":"https://rsshub.app/jandan"}
+        {"url":"https://spac4fun.herokuapp.com/ifanr/coolbuy"},
+        {"url":"https://spac4fun.herokuapp.com/sspai/index"},
+        {"url":"https://spac4fun.herokuapp.com/pingwest/status"},
+        {"url":"https://spac4fun.herokuapp.com/jandan"}
       ]
     },
     "discussion": {
       "followed": [
-        {"url":"https://rsshub.app/jandan/top-comments"},
-        {"url":"https://rsshub.app/v2ex/topics/hot"}
+        {"url":"https://spac4fun.herokuapp.com/jandan/top-comments"},
+        {"url":"https://spac4fun.herokuapp.com/v2ex/topics/hot"}
       ]
     },
     "picture": {
       "followed": [
-        {"url":"https://rsshub.app/jandan/top-3days"},
-        {"url":"https://rsshub.app/jandan/top-7days"}
+        {"url":"https://spac4fun.herokuapp.com/jandan/top-3days"},
+        {"url":"https://spac4fun.herokuapp.com/jandan/top-7days"}
       ]
     }
   },
