@@ -8,10 +8,10 @@ import Link from 'next/link';
 export default function Layout({ children }) {
     return (
         <div className={styles.container}>
-            <header>
+            <header className={styles.header}>
                 <Link href={'/discuss'}>讨论</Link>
             </header>
-            <main>{children}</main>
+            <main style={{flex:6}}>{children}</main>
             <div className={styles.followsBar}>
                 <Link href={'/discuss/jandan'}>煎蛋热评</Link>
                 <Link href={'/discuss/v2ex'}>v2ex热榜</Link>
