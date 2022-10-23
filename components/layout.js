@@ -9,7 +9,10 @@ export default function Layout({ children }) {
     return (
         <div className={styles.container}>
             <header className={styles.header}>
-                <Link href={'/discuss'}>讨论</Link>
+                <Link href={'/discuss'}>议</Link>
+                <Link href={'/discuss'}>文</Link>
+                <Link href={'/discuss'}>图</Link>
+                <Link href={'/discuss'}>影</Link>
             </header>
             <main style={{flex:6}}>{children}</main>
             <div className={styles.followsBar}>

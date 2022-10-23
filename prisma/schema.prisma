@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model comment {
+  id        String  @id @db.VarChar(100)
+  pill_id   String? @db.VarChar(100)
+  author    String? @db.VarChar(100)
+  pub_date  String? @db.VarChar(100)
+  rec_date  String? @db.VarChar(100)
+  content   String?
+  vote      String? @db.VarChar(100)
+  reply_ids String? @db.VarChar(100)
+  avatar    String? @db.VarChar(100)
+}
+
+model discuss {
+  source      String? @db.VarChar(100)
+  source_link String? @db.VarChar(100)
+  id          String  @id @db.VarChar(100)
+  title       String?
+  cover_url   String? @db.VarChar(100)
+  description String?
+  author      String? @db.VarChar(100)
+  link        String? @db.VarChar(100)
+  pub_date    String? @db.VarChar(100)
+  rec_date    String? @db.VarChar(100)
+  content     String?
+  pill_type   String? @db.VarChar(100)
+  pill_belong String? @db.VarChar(100)
+}

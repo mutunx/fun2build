@@ -11,21 +11,21 @@ function Pill(props) {
 
     return (
         <Flex onClick={onOpen} flexDirection={'column'} marginY={'1rem'} padding={'1rem'} borderWidth='1px' borderRadius='lg' overflow='hidden'>
+            <Flex justify={'space-between'}>
+                <Flex>
+                    <Stack direction='row'>
+                        <Badge variant='outline' alignSelf={'center'} fontSize='0.8em' colorScheme='blue'>{source} by{author}</Badge>
+                    </Stack>
+                </Flex>
+                <Text color={'gray.50'} title={pub_date}>{pub_date}</Text>
+            </Flex>
             <Flex>
                 {title === '' ?
                     <Text>{htmlParse(content)}</Text>
                     : <Text>{title}</Text>
                 }
             </Flex>
-            <Flex justify={'space-between'}>
-                <Flex>
-                    <Stack direction='row'>
-                        <Badge variant='outline' alignSelf={'center'} fontSize='0.8em' colorScheme='blue'>{source}</Badge>
-                        <Badge variant='outline' alignSelf={'center'} fontSize='0.8em'>by {author}</Badge>
-                    </Stack>
-                </Flex>
-                <Text>{pub_date}</Text>
-            </Flex>
+
 
 
 
