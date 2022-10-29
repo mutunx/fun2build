@@ -13,7 +13,6 @@ import {
 
 function Comment(props) {
     const {comments,isOpen, onClose} = props;
-    console.log(comments)
     return (
         <>
             <Modal isOpen={isOpen} onClose={onClose}>
