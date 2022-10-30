@@ -14,5 +14,21 @@
       "video": "",
       "article": ""
     }
+  },
+  {
+    "belong": "v2ex",
+    "pill": {
+      "discuss": "https://vercel.space4.fun/jandan/top-comments",
+      "picture": "",
+      "video": "",
+      "article": ""
+    },
+    "comment": {
+      "all": "https://worker.space4.fun",
+      "discuss": "",
+      "picture": "",
+      "video": "",
+      "article": ""
+    }
   }
 ]
