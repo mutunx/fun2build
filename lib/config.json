@@ -1,43 +1,18 @@
-{
-  "RSSHub": {
-    "video": {
-      "followed": [
-        {"url":"https://vercel.space4.fun/youtube/channel/UC9v3JGut2Z1PxrXEpGzgEAA/false"},
-        {"url":"https://vercel.space4.fun/youtube/channel/UCvUJ6BwgUGWBHuUd0cv546g/false"},
-        {"url":"https://vercel.space4.fun/youtube/channel/UC_cv0cSeP4H08QKMlR5b-rw/false"},
-        {"url":"https://vercel.space4.fun/youtube/channel/UCT1YrR_CLpwosODYagzhm7Q/false"},
-        {"url":"https://vercel.space4.fun/youtube/channel/UC8w6AKzoMWZjX3J445gt6NA/false"},
-        {"url":"https://vercel.space4.fun/youtube/channel/UCrTZu-oDZtnfJ-YIK3V9NLw/false"},
-        {"url":"https://vercel.space4.fun/youtube/channel/UCZuuX733ImhEE-ujmWPoZZA/false"},
-        {"url":"https://vercel.space4.fun/youtube/channel/UCGkdwmBhwr61OrCQ4dXXdew/false"}
-      ]
+[
+  {
+    "belong": "jandan",
+    "pill": {
+      "discuss": "https://vercel.space4.fun/jandan/top-comments",
+      "picture": "",
+      "video": "",
+      "article": ""
     },
-    "article": {
-      "followed": [
-        {"url":"https://vercel.space4.fun/ifanr/coolbuy"},
-        {"url":"https://vercel.space4.fun/sspai/index"},
-        {"url":"https://vercel.space4.fun/pingwest/status"},
-        {"url":"https://vercel.space4.fun/jandan"}
-      ]
-    },
-    "discuss": {
-      "followed": [
-        {
-          "url":"https://vercel.space4.fun/jandan/top-comments",
-          "source":"jandan"
-        },
-        {
-          "url":"https://vercel.space4.fun/v2ex/topics/hot",
-          "source":"v2ex"
-        }
-      ]
-    },
-    "picture": {
-      "followed": [
-        {"url":"https://vercel.space4.fun/jandan/top-3days"},
-        {"url":"https://vercel.space4.fun/jandan/top-7days"}
-      ]
+    "comment": {
+      "all": "https://worker.space4.fun",
+      "discuss": "",
+      "picture": "",
+      "video": "",
+      "article": ""
     }
   }
-
-}
+]

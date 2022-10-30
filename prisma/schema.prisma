@@ -19,10 +19,10 @@ model comment {
   avatar    String? @db.VarChar(100)
 }
 
-model discuss {
+model pill {
   source      String? @db.VarChar(100)
   source_link String? @db.VarChar(100)
-  id          String  @id @db.VarChar(100)
+  id          String  @id(map: "discuss_pkey") @db.VarChar(100)
   title       String?
   cover_url   String? @db.VarChar(100)
   description String?

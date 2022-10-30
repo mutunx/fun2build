@@ -2,7 +2,7 @@
 
 -- DROP TABLE IF EXISTS public.discuss;
 
-CREATE TABLE IF NOT EXISTS public.discuss
+CREATE TABLE IF NOT EXISTS public.pill
 (
     source character varying(100) COLLATE pg_catalog."default",
     source_link character varying(100) COLLATE pg_catalog."default",
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS public.discuss
 
 TABLESPACE pg_default;
 
-ALTER TABLE IF EXISTS public.discuss
+ALTER TABLE IF EXISTS public.pill
     OWNER to postgres;
 
 
