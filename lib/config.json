@@ -18,13 +18,13 @@
   {
     "belong": "v2ex",
     "pill": {
-      "discuss": "https://vercel.space4.fun/jandan/top-comments",
+      "discuss": "https://vercel.space4.fun/v2ex/topics/latest",
       "picture": "",
       "video": "",
       "article": ""
     },
     "comment": {
-      "all": "https://worker.space4.fun",
+      "all": "https://vercel.space4.fun/v2ex/post",
       "discuss": "",
       "picture": "",
       "video": "",

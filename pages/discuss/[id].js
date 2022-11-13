@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router'
 import {listPill, listPillBelongs} from "../../lib/pills.js";
 import Pill from "../../components/pill.js";
 import Layout from "../../components/layout.js";
