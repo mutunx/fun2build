@@ -16,18 +16,38 @@ function Comment(props) {
     const {comments,isOpen, onClose} = props;
 
 
-    function getReply(comments,replyIdsStr) {
-        const replyIds = replyIdsStr.split(',');
-        const replyList = comments.filter(c =>  replyIds.includes(c.id));
-        console.log(replyList,replyIdsStr);
+    function SingleComment(props) {
+        const {author, vote,content} = props;
         return (
-            <Flex>
+            <Flex flexDirection={"column"}>
+                <Stack direction='row'>
+                    <Badge  alignSelf={'center'} fontSize='0.8em' >{author} &#9650;{vote}:</Badge>
+                </Stack>
+                <Text>{content}</Text>
+            </Flex>
+        )
+    }
+
+    function ReplyComments(props) {
+        const {comment,comments} = props;
+        const {reply_ids} = comment;
+        const replyIds = reply_ids.split(',');
+        const replyList = comments.filter(c =>  replyIds.includes(c.id));
+        return (
+            <Flex 
+            borderLeft={".25rem"} 
+            paddingLeft={'.25rem'}
+            marginLeft={'.25rem'} 
+            marginBottom={'.5rem'}
+            flexDirection={'column'} 
+            borderStyle={"solid"}
+            borderColor={'gray.500'}
+            >
                 {replyList.map(reply => {
-                        getReply(comments, reply.reply_ids);
-                        return (<Text> | {reply.author}:{reply.content}</Text>);
+                        return (<ReplyComments comment={reply} comments={comments} />)
                     }
                 )}
-
+                <SingleComment {...comment} />
             </Flex>
         )
     }
@@ -41,13 +61,8 @@ function Comment(props) {
                     <ModalCloseButton />
                     <ModalBody>
                         {comments.map(c =>
-                            <Flex flexDirection={'column'}>
-                                {getReply(comments,c.reply_ids)}
-                                <Text>{c.content}</Text>
-                                <Stack direction='row'>
-                                    <Badge variant='outline' alignSelf={'center'} fontSize='0.8em' colorScheme='red'>&#9650; {c.vote}</Badge>
-                                    <Badge variant='outline' alignSelf={'center'} fontSize='0.8em'>by {c.author}</Badge>
-                                </Stack>
+                            <Flex marginBottom={'1rem'}>
+                                <ReplyComments comment={c} comments={comments} />
                             </Flex>
                         )}
                     </ModalBody>

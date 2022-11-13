@@ -4,7 +4,7 @@ import Comment from "./comment.js";
 import htmlParse from 'html-react-parser';
 
 function Pill(props) {
-    const {source,pub_date,author,vote,title,content,comments} = props;
+    const {source,pub_date,author,id,title,content,comments} = props;
 
     const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -14,17 +14,19 @@ function Pill(props) {
             <Flex justify={'space-between'}>
                 <Flex>
                     <Stack direction='row'>
-                        <Badge variant='outline' alignSelf={'center'} fontSize='0.8em' colorScheme='blue'>{source} by{author}</Badge>
+                        <Badge variant='subtle' alignSelf={'center'} fontSize='0.8em'>{source}</Badge>
                     </Stack>
                 </Flex>
-                <Text color={'gray.50'} title={pub_date}>{pub_date}</Text>
+                <Text color={'gray.50'} fontSize={'xs'} title={pub_date}>{pub_date}</Text>
+                <Text fontSize={'xs'} title={id} color={'gray.400'}> {author}</Text>
             </Flex>
-            <Flex>
+            <Flex marginY={'1rem'}>
                 {title === '' ?
                     <Text>{htmlParse(content)}</Text>
                     : <Text>{title}</Text>
                 }
             </Flex>
+        
 
 
 
