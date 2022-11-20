@@ -10,20 +10,21 @@ import {
     ModalOverlay, Stack, Text,
     useDisclosure
 } from "@chakra-ui/react";
+import htmlParse from 'html-react-parser';
 
 
 function Comment(props) {
-    const {comments,isOpen, onClose} = props;
-
+    const {comments,isOpen, onClose,pill} = props;
 
     function SingleComment(props) {
-        const {author, vote,content} = props;
+        const {author, vote,content,id} = props;
+        const displayLikes = vote.toString() !== '-1';
         return (
-            <Flex flexDirection={"column"}>
+            <Flex key={id} flexDirection={"column"}>
                 <Stack direction='row'>
-                    <Badge  alignSelf={'center'} fontSize='0.8em' >{author} &#9650;{vote}:</Badge>
+                    <Badge  alignSelf={'center'} fontSize='0.8em' >{author} {displayLikes ? `\u25B2${vote}`: '' }:</Badge>
                 </Stack>
-                <Text>{content}</Text>
+                <Text>{htmlParse(content)}</Text>
             </Flex>
         )
     }
@@ -32,7 +33,14 @@ function Comment(props) {
         const {comment,comments} = props;
         const {reply_ids} = comment;
         const replyIds = reply_ids.split(',');
-        const replyList = comments.filter(c =>  replyIds.includes(c.id));
+        let replyList = comments.filter(c =>  replyIds.includes(c.id));
+        if (replyIds.length > 0 && replyList.length === 0) {
+            replyList = comments.filter(c => {
+                if (c.author === comment.author) return false;
+                return replyIds.includes(c.author);
+
+            });
+        }
         return (
             <Flex 
             borderLeft={".25rem"} 
@@ -57,12 +65,18 @@ function Comment(props) {
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader>评论</ModalHeader>
+                    <ModalHeader></ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
+                        <Flex flexDirection={"column"} mb={"2"}>
+                            <Stack direction='row' mb={"1"}>
+                                <Badge  alignSelf={'center'} fontSize='0.8em' >{pill.author}:</Badge>
+                            </Stack>
+                            {htmlParse(pill.content??'')}
+                        </Flex>
                         {comments.map(c =>
                             <Flex marginBottom={'1rem'}>
-                                <ReplyComments comment={c} comments={comments} />
+                                <ReplyComments key={c.id} comment={c} comments={comments} />
                             </Flex>
                         )}
                     </ModalBody>
