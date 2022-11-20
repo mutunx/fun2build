@@ -6,7 +6,6 @@ function Pill(props) {
     const {source,pub_date,author,id,title,content,comments} = props;
     const emptyComment = comments.length === 0;
     const { isOpen, onOpen, onClose } = useDisclosure();
-    console.log(emptyComment);
 
     return (
         <Flex key={id} onClick={onOpen} boxShadow={emptyComment ? '':'2px 2px #719096'}  flexDirection={'column'} marginY={'1rem'} padding={'1rem'} borderWidth='1px' borderRadius='lg' overflow='hidden'>

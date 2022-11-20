@@ -15,13 +15,13 @@ import {
 function Comment(props) {
     const {comments,isOpen, onClose} = props;
 
-
     function SingleComment(props) {
         const {author, vote,content} = props;
+        const displayLikes = vote.toString() !== '-1';
         return (
             <Flex flexDirection={"column"}>
                 <Stack direction='row'>
-                    <Badge  alignSelf={'center'} fontSize='0.8em' >{author} &#9650;{vote}:</Badge>
+                    <Badge  alignSelf={'center'} fontSize='0.8em' >{author} {displayLikes ? `\u25B2${vote}`: '' }:</Badge>
                 </Stack>
                 <Text>{content}</Text>
             </Flex>
