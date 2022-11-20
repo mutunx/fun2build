@@ -17,10 +17,10 @@ function Comment(props) {
     const {comments,isOpen, onClose,pill} = props;
 
     function SingleComment(props) {
-        const {author, vote,content} = props;
+        const {author, vote,content,id} = props;
         const displayLikes = vote.toString() !== '-1';
         return (
-            <Flex flexDirection={"column"}>
+            <Flex key={id} flexDirection={"column"}>
                 <Stack direction='row'>
                     <Badge  alignSelf={'center'} fontSize='0.8em' >{author} {displayLikes ? `\u25B2${vote}`: '' }:</Badge>
                 </Stack>
@@ -35,8 +35,11 @@ function Comment(props) {
         const replyIds = reply_ids.split(',');
         let replyList = comments.filter(c =>  replyIds.includes(c.id));
         if (replyIds.length > 0 && replyList.length === 0) {
-            console.log(replyIds);
-            replyList = comments.filter(c =>  replyIds.includes(c.author));
+            replyList = comments.filter(c => {
+                if (c.author === comment.author) return false;
+                return replyIds.includes(c.author);
+
+            });
         }
         return (
             <Flex 
@@ -73,7 +76,7 @@ function Comment(props) {
                         </Flex>
                         {comments.map(c =>
                             <Flex marginBottom={'1rem'}>
-                                <ReplyComments comment={c} comments={comments} />
+                                <ReplyComments key={c.id} comment={c} comments={comments} />
                             </Flex>
                         )}
                     </ModalBody>
