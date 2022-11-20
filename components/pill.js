@@ -30,7 +30,7 @@ function Pill(props) {
 
 
 
-            <Comment comments={comments} isOpen={isOpen && !emptyComment} onClose={onClose} />
+            <Comment comments={comments} pill={props} isOpen={isOpen && !emptyComment} onClose={onClose} />
         </Flex>
     );
 }
