@@ -24,7 +24,7 @@ function Comment(props) {
                 <Stack direction='row'>
                     <Badge  alignSelf={'center'} fontSize='0.8em' >{author} {displayLikes ? `\u25B2${vote}`: '' }:</Badge>
                 </Stack>
-                <Text>{htmlParse(content)}</Text>
+                <Text overflowWrap={'anywhere'}>{htmlParse(content)}</Text>
             </Flex>
         )
     }
