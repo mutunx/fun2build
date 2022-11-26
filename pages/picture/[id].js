@@ -5,10 +5,10 @@ import Layout from "../../components/layout.js";
 export async function getStaticProps(context) {
     const { params } = context;
     const id = params.id;
-    const discuss = await listPill('discuss',id);
+    const picture = await listPill('picture',id);
     return {
         props: {
-            discuss,
+            picture,
         },
     };
 }
@@ -22,8 +22,8 @@ export async function getStaticPaths() {
 export default function Discuss({discuss}) {
 
     return (
-        <Layout current='discuss'>
-            {discuss.map(d =>
+        <Layout current='picture'>
+            {picture.map(d =>
                 <Pill key={d.id} {...d} />
             )}
         </Layout>
