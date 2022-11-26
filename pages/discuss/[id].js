@@ -24,7 +24,7 @@ export default function Discuss({discuss}) {
     return (
         <Layout>
             {discuss.map(d =>
-                <Pill {...d} />
+                <Pill key={d.id} {...d} />
             )}
         </Layout>
     );

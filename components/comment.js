@@ -51,11 +51,11 @@ function Comment(props) {
             borderStyle={"solid"}
             borderColor={'gray.500'}
             >
-                {replyList.map(reply => {
-                        return (<ReplyComments comment={reply} comments={comments} />)
+                {replyList.map((reply,i) => {
+                        return (<ReplyComments key={comment.id+i} comment={reply} comments={comments} />)
                     }
                 )}
-                <SingleComment {...comment} />
+                <SingleComment  {...comment} />
             </Flex>
         )
     }
@@ -75,8 +75,8 @@ function Comment(props) {
                             {htmlParse(pill.content??'')}
                         </Flex>
                         {comments.map(c =>
-                            <Flex marginBottom={'1rem'}>
-                                <ReplyComments key={c.id} comment={c} comments={comments} />
+                            <Flex key={c.id} marginBottom={'1rem'}>
+                                <ReplyComments  comment={c} comments={comments} />
                             </Flex>
                         )}
                     </ModalBody>
