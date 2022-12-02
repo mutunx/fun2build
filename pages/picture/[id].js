@@ -19,7 +19,7 @@ export async function getStaticPaths() {
         fallback: false,
     };
 }
-export default function Discuss({discuss}) {
+export default function Discuss({picture}) {
 
     return (
         <Layout current='picture'>
