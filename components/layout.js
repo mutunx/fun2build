@@ -14,7 +14,7 @@ const source = {
 }
 
 export default function Layout({ children,current }) {
-    console.log(current==='discuss');
+
     return (
         <div className={styles.container}>
             <header className={styles.header}>
