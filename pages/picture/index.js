@@ -3,19 +3,19 @@ import {listPill} from "../../lib/pills.js";
 import Pill from "../../components/pill.js";
 export async function getStaticProps() {
     // Add the "await" keyword like this:
-    const discuss = await listPill('discuss','');
+    const picture = await listPill('picture','');
     return {
         props: {
-            discuss,
+            picture,
         },
     };
 }
 
-export default function Discuss({discuss}) {
+export default function Discuss({picture}) {
 
     return (
-        <Layout current={'discuss'}>
-            {discuss.map(d =>
+        <Layout current={'picture'}>
+            {picture.map(d =>
                 <Pill key={d.id} {...d} />
             )}
         </Layout>
