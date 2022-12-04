@@ -18,9 +18,13 @@ export default function Layout({ children,current }) {
     return (
         <div className={styles.container}>
             <header className={styles.header}>
-                <Link href={'/discuss'}>议</Link>
+                <Link href={'/discuss'}>
+                    <a className={current==='discuss' ? styles.active:''}>议</a>
+                </Link>
                 {/* <Link href={'/discuss'}>文</Link> */}
-                <Link href={'/picture'}>图</Link>
+                <Link href={'/picture'}>
+                    <a className={current==='picture' ? styles.active:''}>图</a>
+                </Link>
                 {/* <Link href={'/discuss'}>影</Link> */}
             </header>
             <main style={{flex:6}}>{children}</main>

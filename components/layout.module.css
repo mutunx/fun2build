@@ -35,6 +35,10 @@
     text-shadow: 0px -1px 1px grey, -1px 0px 1px lightgrey;
 }
 
+.active {
+    text-shadow: 0px 1px 1px grey, -2px 3px 2px lightgrey !important;
+    color:white;
+}
 .backToHome {
     margin: 3rem 0 0;
 }
